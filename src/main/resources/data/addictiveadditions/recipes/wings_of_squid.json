@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bdb",
+    "bnb",
+    "bdb"
+  ],
+  "key": {
+    "b": {
+      "item": "addictiveadditions:ink"
+    },
+    "n": {
+      "item": "minecraft:gold_block"
+    },
+    "d": {
+      "item": "minecraft:diamond"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:wings_of_squid"
+  }
+}

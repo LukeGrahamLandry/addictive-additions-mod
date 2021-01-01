@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "bdb",
+    "bnb",
+    "bdb"
+  ],
+  "key": {
+    "b": {
+      "item": "addictiveadditions:bat_wing"
+    },
+    "n": {
+      "item": "minecraft:nether_star"
+    },
+    "d": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:wings_of_bat"
+  }
+}
