@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "pattern": [
     "bdb",
-    "bnb",
+    "gng",
     "bdb"
   ],
   "key": {
@@ -11,6 +11,9 @@
     },
     "n": {
       "item": "minecraft:nether_star"
+    },
+    "g": {
+      "item": "minecraft:ghast_tear"
     },
     "d": {
       "item": "minecraft:diamond_block"

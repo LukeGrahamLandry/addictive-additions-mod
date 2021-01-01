@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "sls",
+    "lcl",
+    "sls"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:string"
+    },
+    "l": {
+      "item": "minecraft:leather"
+    },
+    "c": {
+      "item": "minecraft:chest"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:small_bag"
+  }
+}

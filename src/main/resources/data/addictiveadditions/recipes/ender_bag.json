@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:ender_chest"
+    },
+    {
+      "item": "addictiveadditions:small_bag"
+    }
+  ],
+  "result": {
+    "item": "addictiveadditions:ender_bag"
+  }
+}

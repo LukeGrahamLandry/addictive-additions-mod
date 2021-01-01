@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "firstmod:items/fruit"
+    "layer0": "addictiveadditions:items/bat_wing"
   }
 }

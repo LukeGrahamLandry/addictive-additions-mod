@@ -1,7 +1,9 @@
 package com.lukegraham.addictiveadditions;
 
 import com.lukegraham.addictiveadditions.init.*;
+import com.lukegraham.addictiveadditions.world.OreGen;
 import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -30,6 +32,8 @@ public class AddictiveAdditions
         ItemInit.ITEMS.register(modEventBus);     // registers your items
         BlockInit.BLOCKS.register(modEventBus);   // registers your blocks
         EntityInit.ENTITY_TYPES.register(modEventBus);
+
+        MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGen::addFeaturesToBiomes);
 
         // Register ourselves for server and other game events we are interested in
         MinecraftForge.EVENT_BUS.register(this);

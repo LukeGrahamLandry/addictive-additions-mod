@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:shulker_box"
+    },
+    {
+      "item": "addictiveadditions:small_bag"
+    }
+  ],
+  "result": {
+    "item": "addictiveadditions:shulker_bag"
+  }
+}
