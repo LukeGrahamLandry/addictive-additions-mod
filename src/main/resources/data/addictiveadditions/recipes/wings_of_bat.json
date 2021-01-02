@@ -1,9 +1,9 @@
 {
   "type": "minecraft:crafting_shaped",
   "pattern": [
-    "bdb",
-    "gng",
-    "bdb"
+    "enw",
+    "gdg",
+    "bbb"
   ],
   "key": {
     "b": {
@@ -15,8 +15,14 @@
     "g": {
       "item": "minecraft:ghast_tear"
     },
+    "e": {
+      "item": "minecraft:elytra"
+    },
     "d": {
       "item": "minecraft:diamond_block"
+    },
+    "w": {
+      "item": "addictiveadditions:wings_of_squid"
     }
   },
   "result": {

@@ -2,6 +2,9 @@ package com.lukegraham.addictiveadditions.init;
 
 import com.lukegraham.addictiveadditions.AddictiveAdditions;
 import com.lukegraham.addictiveadditions.items.*;
+import com.lukegraham.addictiveadditions.items.aoe_tools.ExcavatorItem;
+import com.lukegraham.addictiveadditions.items.aoe_tools.HammerItem;
+import com.lukegraham.addictiveadditions.items.aoe_tools.LumberAxeItem;
 import net.minecraft.item.*;
 import net.minecraftforge.fml.RegistryObject;
 import net.minecraftforge.registries.DeferredRegister;
@@ -18,6 +21,14 @@ public class ItemInit {
     public static final RegistryObject<Item> SHULKER_BAG = ITEMS.register("shulker_bag", () -> new BagItem(props().maxStackSize(1), "Shulker"));
     public static final RegistryObject<Item> ENDER_BAG = ITEMS.register("ender_bag", () -> new EnderBag(props().maxStackSize(1)));
     public static final RegistryObject<Item> SMALL_BAG = ITEMS.register("small_bag", () -> new BagItem(props().maxStackSize(1), "Small"));
+
+    public static final RegistryObject<Item> IRON_HAMMER = ITEMS.register("iron_hammer", () -> new HammerItem(ItemTier.IRON, 6, -4.0F, props()));
+    public static final RegistryObject<Item> DIAMOND_HAMMER = ITEMS.register("diamond_hammer", () -> new HammerItem(ItemTier.DIAMOND, 6, -4.0F, props()));
+    public static final RegistryObject<Item> NETHERITE_HAMMER = ITEMS.register("netherite_hammer", () -> new HammerItem(ItemTier.NETHERITE, 6, -4.0F, props()));
+    public static final RegistryObject<Item> IRON_EXCAVATOR = ITEMS.register("iron_excavator", () -> new ExcavatorItem(ItemTier.IRON, 6, -4.0F, props()));
+    public static final RegistryObject<Item> IRON_LUMBER_AXE = ITEMS.register("iron_lumber_axe", () -> new LumberAxeItem(ItemTier.IRON, 6, -4.0F, props()));
+
+    public static final RegistryObject<Item> ANTI_TRAMPLE_CHARM = ITEMS.register("anti_trample_charm", () -> new AntiTrampleCharm(props()));
 
     private static RegistryObject<Item> createDescriptionItem(String name, String description){
         return ITEMS.register(name, () -> new DescribableItem(props(), description));

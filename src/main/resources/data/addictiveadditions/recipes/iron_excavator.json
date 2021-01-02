@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "b",
+    "s",
+    "s"å
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "b": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:iron_excavator"
+  }
+}

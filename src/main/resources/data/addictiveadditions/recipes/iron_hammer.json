@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ibi",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "b": {
+      "item": "minecraft:iron_block"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:iron_hammer"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ibi",
+    " s ",
+    " s "
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:stick"
+    },
+    "i": {
+      "item": "minecraft:diamond"
+    },
+    "b": {
+      "item": "minecraft:diamond_block"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:diamond_hammer"
+  }
+}
