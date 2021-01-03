@@ -1,0 +1,28 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " p ",
+    "bgs",
+    " f "
+  ],
+  "key": {
+    "f": {
+      "item": "minecraft:feather"
+    },
+    "g": {
+      "item": "minecraft:gold_ingot"
+    },
+    "s": {
+      "item": "minecraft:seeds"
+    },
+    "p": {
+      "item": "minecraft:phantom_membrane"
+    },
+    "b": {
+      "item": "addictiveadditions:bat_wing"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:anti_trample_charm"
+  }
+}

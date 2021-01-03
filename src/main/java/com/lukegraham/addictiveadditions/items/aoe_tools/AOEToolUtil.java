@@ -29,15 +29,19 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class AOEToolUtil {
+    public interface IAOEtool {
+        default Iterable<BlockPos> getAOEBlocks(ItemStack stack, World world, PlayerEntity player, BlockPos pos) {
+            return AOEToolUtil.locateAOEBlocks(stack, player, pos);
+        }
+    }
+
     public static BlockRayTraceResult rayTracePlayer(PlayerEntity player) {
         return (BlockRayTraceResult) player.pick(player.getAttributeValue(ForgeMod.REACH_DISTANCE.get()),0,false);
     }
 
-
     public static List<BlockPos> locateAOEBlocks(ItemStack stack, PlayerEntity player, BlockPos origin) {
         return locateAOEBlocks(stack, player, origin, rayTracePlayer(player), true);
     }
-
 
     public static List<BlockPos> locateAOEBlocks(ItemStack stack, PlayerEntity player, BlockPos origin, BlockRayTraceResult trace, boolean isBreaking) {
         if (trace.getType() != RayTraceResult.Type.BLOCK) {
@@ -55,6 +59,7 @@ public class AOEToolUtil {
         int radius = 1;
         BlockPos aPos = origin;
         World world = player.getEntityWorld();
+        Item item = stack.getItem();
         float mainHardness = state.getBlockHardness(world, aPos);
 
         int xRange = radius;
@@ -74,6 +79,13 @@ public class AOEToolUtil {
         ArrayList<BlockPos> toBreak = new ArrayList<>();
         int harvestLevel = ((ToolItem)stack.getItem()).getTier().getHarvestLevel();
 
+        boolean isRightTool = (item instanceof HammerItem && state.getHarvestTool() == ToolType.PICKAXE) || (item instanceof ExcavatorItem && state.getHarvestTool() == ToolType.SHOVEL) || (item instanceof LumberAxeItem && state.getHarvestTool() == ToolType.AXE);
+        if (!isRightTool){
+            toBreak.add(origin);
+            return toBreak;
+        }
+
+
         for (int xPos = aPos.getX() - xRange; xPos <= aPos.getX() + xRange; xPos++) {
             for (int yPos = aPos.getY() - yRange; yPos <= aPos.getY() + yRange; yPos++) {
                 for (int zPos = aPos.getZ() - zRange; zPos <= aPos.getZ() + zRange; zPos++) {
@@ -82,7 +94,8 @@ public class AOEToolUtil {
                         BlockPos thePos = new BlockPos(xPos, yPos, zPos);
                         BlockState theState = world.getBlockState(thePos);
                         int blockLevel = world.getBlockState(thePos).getHarvestLevel();
-                        if (theState.getBlockHardness(world, thePos) <= mainHardness + 5.0F && blockLevel <= harvestLevel) {
+                        boolean rightTool = (item instanceof HammerItem && theState.getHarvestTool() == ToolType.PICKAXE) || (item instanceof ExcavatorItem && theState.getHarvestTool() == ToolType.SHOVEL) || (item instanceof LumberAxeItem && theState.getHarvestTool() == ToolType.AXE);
+                        if (rightTool && theState.getBlockHardness(world, thePos) <= mainHardness + 5.0F && blockLevel <= harvestLevel) {
                             toBreak.add(thePos);
                         }
                     }

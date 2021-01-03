@@ -29,6 +29,7 @@ public class ItemInit {
     public static final RegistryObject<Item> IRON_LUMBER_AXE = ITEMS.register("iron_lumber_axe", () -> new LumberAxeItem(ItemTier.IRON, 6, -4.0F, props()));
 
     public static final RegistryObject<Item> ANTI_TRAMPLE_CHARM = ITEMS.register("anti_trample_charm", () -> new AntiTrampleCharm(props()));
+    public static final RegistryObject<Item> HELP_BOOK = ITEMS.register("help_book", () -> new HelpBook(props()));
 
     private static RegistryObject<Item> createDescriptionItem(String name, String description){
         return ITEMS.register(name, () -> new DescribableItem(props(), description));
@@ -47,7 +48,7 @@ public class ItemInit {
 
         @Override
         public ItemStack createIcon() {
-            return new ItemStack(WINGS_OF_BAT.get());
+            return new ItemStack(SMALL_BAG.get());
         }
     }
 

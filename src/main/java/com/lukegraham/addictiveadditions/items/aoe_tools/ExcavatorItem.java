@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class ExcavatorItem extends ShovelItem {
+public class ExcavatorItem extends ShovelItem implements AOEToolUtil.IAOEtool {
     public ExcavatorItem(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
         super(tier, attackDamageIn, attackSpeedIn, builder);
     }
@@ -44,6 +44,6 @@ public class ExcavatorItem extends ShovelItem {
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        return super.getDestroySpeed(stack, state) / 3.0F;
+        return super.getDestroySpeed(stack, state) / 4.0F;
     }
 }

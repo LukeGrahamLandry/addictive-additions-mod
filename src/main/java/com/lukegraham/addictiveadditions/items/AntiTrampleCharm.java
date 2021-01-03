@@ -15,6 +15,7 @@ import net.minecraft.util.text.ITextComponent;
 import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 import net.minecraftforge.event.world.BlockEvent;
+import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 import java.util.List;
@@ -33,6 +34,7 @@ public class AntiTrampleCharm extends Item {
         super.addInformation(stack, worldIn, tooltip, flagIn);
     }
 
+    @SubscribeEvent
     public static void noTrample(BlockEvent.FarmlandTrampleEvent event){
         if (event.getEntity() instanceof PlayerEntity){
             PlayerEntity player = (PlayerEntity) event.getEntity();

@@ -1,7 +1,7 @@
 {
     "itemGroup.addictiveadditions": "Addictive Additions",
 
-    "item.addictiveadditions.bat_win": "Bat Wing",
+    "item.addictiveadditions.bat_wing": "Bat Wing",
     "item.addictiveadditions.wings_of_bat": "Wings of the Bat",
     "item.addictiveadditions.wings_of_squid": "Wings of the Squid",
     "item.addictiveadditions.small_bag": "Small Bag",
@@ -10,5 +10,8 @@
     "item.addictiveadditions.iron_hammer": "Iron Hammer",
     "item.addictiveadditions.diamond_hammer": "Diamond Hammer",
     "item.addictiveadditions.netherite_hammer": "Netherite Hammer",
-    "item.addictiveadditions.anti_trample_charm": "Anti-Trample Charm"
+    "item.addictiveadditions.iron_excavator": "Iron Excavator",
+    "item.addictiveadditions.iron_lumber_axe": "Iron Lumber Axe",
+    "item.addictiveadditions.anti_trample_charm": "Anti-Trample Charm",
+    "item.addictiveadditions.help_book": "Help Book"
 }

@@ -17,7 +17,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class LumberAxeItem extends AxeItem {
+public class LumberAxeItem extends AxeItem implements AOEToolUtil.IAOEtool {
     public LumberAxeItem(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
         super(tier, attackDamageIn, attackSpeedIn, builder);
     }
@@ -44,6 +44,10 @@ public class LumberAxeItem extends AxeItem {
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        return state.isIn(BlockTags.LEAVES) ? 100 : super.getDestroySpeed(stack, state) / 3.0F;
+        return state.isIn(BlockTags.LEAVES) ? 100 : super.getDestroySpeed(stack, state) / 4.0F;
+    }
+
+    public Iterable<BlockPos> getAOEBlocks(ItemStack stack, World world, PlayerEntity player, BlockPos pos){
+        return AOETreeUtil.getBlocks(player, pos);
     }
 }

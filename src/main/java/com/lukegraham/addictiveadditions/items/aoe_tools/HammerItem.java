@@ -20,7 +20,7 @@ import net.minecraft.world.World;
 
 import java.util.List;
 
-public class HammerItem extends PickaxeItem {
+public class HammerItem extends PickaxeItem implements AOEToolUtil.IAOEtool {
     public HammerItem(IItemTier tier, int attackDamageIn, float attackSpeedIn, Properties builder) {
         super(tier, attackDamageIn, attackSpeedIn, builder);
     }
@@ -47,6 +47,6 @@ public class HammerItem extends PickaxeItem {
 
     @Override
     public float getDestroySpeed(ItemStack stack, BlockState state) {
-        return super.getDestroySpeed(stack, state) / 3.0F;
+        return super.getDestroySpeed(stack, state) / 4.0F;
     }
 }

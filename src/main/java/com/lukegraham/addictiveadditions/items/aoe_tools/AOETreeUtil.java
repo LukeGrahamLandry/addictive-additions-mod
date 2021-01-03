@@ -48,7 +48,7 @@ public class AOETreeUtil {
 
     public static List<BlockPos> getBlocks(PlayerEntity player, BlockPos base) {
         HashSet<BlockPos> known = new HashSet<>();
-        Predicate<BlockState> matcher = state -> state.isIn(BlockTags.LOGS) || state.isIn(BlockTags.LEAVES);
+        Predicate<BlockState> matcher = state -> state.isIn(BlockTags.LOGS);
         walk(player, matcher, base, known);
         return new ArrayList<>(known);
     }
