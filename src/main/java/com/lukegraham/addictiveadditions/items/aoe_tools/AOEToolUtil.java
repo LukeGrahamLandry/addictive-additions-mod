@@ -43,71 +43,55 @@ public class AOEToolUtil {
         return locateAOEBlocks(stack, player, origin, rayTracePlayer(player), true);
     }
 
+
+    // Based on Actually Additions drill logic
     public static List<BlockPos> locateAOEBlocks(ItemStack stack, PlayerEntity player, BlockPos origin, BlockRayTraceResult trace, boolean isBreaking) {
-        if (trace.getType() != RayTraceResult.Type.BLOCK) {
-            return Collections.emptyList();
-        }
+        if (trace.getType() != RayTraceResult.Type.BLOCK) return Collections.emptyList();
 
-        BlockState state = player.world.getBlockState(origin).getBlockState();
-
-        // make sure block is not air
-        if (state.isAir()) {
-            return Collections.emptyList();
-        }
-
-        Direction side = trace.getFace();
-        int radius = 1;
-        BlockPos aPos = origin;
         World world = player.getEntityWorld();
+        BlockState mainState = world.getBlockState(origin).getBlockState();
+        if (mainState.isAir()) return Collections.emptyList();
+        float mainHardness = mainState.getBlockHardness(world, origin);
         Item item = stack.getItem();
-        float mainHardness = state.getBlockHardness(world, aPos);
 
+
+        // figure out on which axis the plane should be based on the direction the player is looking
+        int radius = 1;
         int xRange = radius;
         int yRange = radius;
         int zRange = 0;
-
-        //Corrects Blocks to hit depending on Side of original Block hit
-        if (side.getAxis() == Direction.Axis.Y) {
+        if (trace.getFace().getAxis() == Direction.Axis.Y) {
             zRange = radius;
             yRange = 0;
         }
-        if (side.getAxis() == Direction.Axis.X) {
+        if (trace.getFace().getAxis() == Direction.Axis.X) {
             xRange = 0;
             zRange = radius;
         }
 
-        ArrayList<BlockPos> toBreak = new ArrayList<>();
         int harvestLevel = ((ToolItem)stack.getItem()).getTier().getHarvestLevel();
+        boolean isRightTool = (item instanceof HammerItem && mainState.getHarvestTool() == ToolType.PICKAXE) || (item instanceof ExcavatorItem && mainState.getHarvestTool() == ToolType.SHOVEL) || (item instanceof LumberAxeItem && mainState.getHarvestTool() == ToolType.AXE);
+        if (!isRightTool) return Collections.emptyList();
 
-        boolean isRightTool = (item instanceof HammerItem && state.getHarvestTool() == ToolType.PICKAXE) || (item instanceof ExcavatorItem && state.getHarvestTool() == ToolType.SHOVEL) || (item instanceof LumberAxeItem && state.getHarvestTool() == ToolType.AXE);
-        if (!isRightTool){
-            toBreak.add(origin);
-            return toBreak;
-        }
+        ArrayList<BlockPos> toBreak = new ArrayList<>();
+        for (int x = origin.getX() - xRange; x <= origin.getX() + xRange; x++) {
+            for (int y = origin.getY() - yRange; y <= origin.getY() + yRange; y++) {
+                for (int z = origin.getZ() - zRange; z <= origin.getZ() + zRange; z++) {
+                    BlockPos pos = new BlockPos(x, y, z);
+                    if (origin == pos) continue;
 
-
-        for (int xPos = aPos.getX() - xRange; xPos <= aPos.getX() + xRange; xPos++) {
-            for (int yPos = aPos.getY() - yRange; yPos <= aPos.getY() + yRange; yPos++) {
-                for (int zPos = aPos.getZ() - zRange; zPos <= aPos.getZ() + zRange; zPos++) {
-                    if (!(aPos.getX() == xPos && aPos.getY() == yPos && aPos.getZ() == zPos)) {
-                        //Only break Blocks around that are (about) as hard or softer
-                        BlockPos thePos = new BlockPos(xPos, yPos, zPos);
-                        BlockState theState = world.getBlockState(thePos);
-                        int blockLevel = world.getBlockState(thePos).getHarvestLevel();
-                        boolean rightTool = (item instanceof HammerItem && theState.getHarvestTool() == ToolType.PICKAXE) || (item instanceof ExcavatorItem && theState.getHarvestTool() == ToolType.SHOVEL) || (item instanceof LumberAxeItem && theState.getHarvestTool() == ToolType.AXE);
-                        if (rightTool && theState.getBlockHardness(world, thePos) <= mainHardness + 5.0F && blockLevel <= harvestLevel) {
-                            toBreak.add(thePos);
-                        }
-                    }
+                    BlockState state = world.getBlockState(pos);
+                    int blockLevel = world.getBlockState(pos).getHarvestLevel();
+                    boolean rightTool = (item instanceof HammerItem && state.getHarvestTool() == ToolType.PICKAXE) || (item instanceof ExcavatorItem && state.getHarvestTool() == ToolType.SHOVEL) || (item instanceof LumberAxeItem && state.getHarvestTool() == ToolType.AXE);
+                    boolean similarHardness = state.getBlockHardness(world, pos) <= mainHardness + 5.0F;  // don't let you break obsidian at the speed of stone
+                    boolean validHarvestLevel = blockLevel <= harvestLevel;  // don't mine netherite with an iron hammer
+                    if (rightTool && similarHardness && validHarvestLevel) toBreak.add(pos);
                 }
             }
         }
 
         return toBreak;
     }
-
-
-    //adaption of AA block breaking to modern versions
 
     /**
      * Tries to break a block as if this player had broken it.  This is a complex operation.
@@ -170,9 +154,6 @@ public class AOEToolUtil {
             }
             // callback to the tool
             stack.onBlockDestroyed(world, state, pos, player);
-
-            // send an update to the server, so we get an update back
-            //ActuallyAdditions.PROXY.sendBreakPacket(pos);
         }
         return true;
     }

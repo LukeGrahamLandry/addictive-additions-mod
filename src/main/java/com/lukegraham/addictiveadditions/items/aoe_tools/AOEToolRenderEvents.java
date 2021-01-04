@@ -32,14 +32,11 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
 // Class stolen from tinkers construct
+// TODO: refactor this so its readable / I understand it
+// PlayerController#curBlockDamageMP is made public by an access transformer
 @Mod.EventBusSubscriber(modid = AddictiveAdditions.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class AOEToolRenderEvents {
 
-    /**
-     * Renders the outline on the extra blocks
-     *
-     * @param event the highlight event
-     */
     @SubscribeEvent
     static void renderBlockHighlights(DrawHighlightEvent.HighlightBlock event) {
         PlayerEntity player = Minecraft.getInstance().player;
@@ -58,7 +55,6 @@ public class AOEToolRenderEvents {
                 ActiveRenderInfo renderInfo = Minecraft.getInstance().gameRenderer.getActiveRenderInfo();
                 Iterable<BlockPos> extraBlocks = ((AOEToolUtil.IAOEtool) tool.getItem()).getAOEBlocks(tool, world, player, event.getTarget().getPos());
 
-                WorldRenderer worldRender = event.getContext();
                 MatrixStack matrix = event.getMatrix();
                 IVertexBuilder vertexBuilder = Minecraft.getInstance().getRenderTypeBuffers().getBufferSource().getBuffer(RenderType.getLines());
                 Entity viewEntity = renderInfo.getRenderViewEntity();
@@ -90,32 +86,18 @@ public class AOEToolRenderEvents {
     @SubscribeEvent
     public static void renderBlockDamageProgress(RenderWorldLastEvent event) {
         PlayerController controller = Minecraft.getInstance().playerController;
-
-        if (controller == null) {
-            return;
-        }
-
         PlayerEntity player = Minecraft.getInstance().player;
 
-        if (player == null) {
-            return;
-        }
+        if (controller == null || player == null) return;
 
         ItemStack tool = player.getHeldItemMainhand();
 
         if (!tool.isEmpty()) {
             if (tool.getItem() instanceof AOEToolUtil.IAOEtool) {
                 Entity renderEntity = Minecraft.getInstance().getRenderViewEntity();
-
-                if (renderEntity == null) {
-                    return;
-                }
-
                 BlockRayTraceResult traceResult = AOEToolUtil.rayTracePlayer(player);
 
-                if (traceResult.getType() != RayTraceResult.Type.BLOCK) {
-                    return;
-                }
+                if (renderEntity == null || traceResult.getType() != RayTraceResult.Type.BLOCK) return;
 
                 Iterable<BlockPos> extraBlocks = ((AOEToolUtil.IAOEtool) tool.getItem()).getAOEBlocks(tool, player.world, player, traceResult.getPos());
 

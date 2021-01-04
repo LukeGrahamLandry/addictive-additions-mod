@@ -18,9 +18,6 @@ import net.minecraftforge.registries.IForgeRegistry;
 public class BlockInit {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AddictiveAdditions.MOD_ID);
 
-    public static final RegistryObject<Block> SMILE_BLOCK = BLOCKS.register("smile_block",
-            () -> new Block(Block.Properties.create(Material.ROCK).hardnessAndResistance(1f, 1200f).harvestLevel(2).harvestTool(ToolType.PICKAXE)));
-
     // automaticlly creates items for all blocks
     // you could do it manually instead by registering BlockItems in your ItemInit class
     @SubscribeEvent

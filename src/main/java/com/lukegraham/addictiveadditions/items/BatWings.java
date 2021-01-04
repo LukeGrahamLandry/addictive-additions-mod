@@ -1,34 +1,18 @@
 package com.lukegraham.addictiveadditions.items;
 
-import com.lukegraham.addictiveadditions.util.KeyboardHelper;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
-import net.minecraft.network.play.server.SPlayerAbilitiesPacket;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 
-import java.util.List;
-
-public class BatWings extends Item {
-    private int MAX = 30*20;
-    private int RECOVER_RATE = 2;
+public class BatWings extends DescribableItem {
+    static private int MAX = 30*20;
+    static private int RECOVER_RATE = 2;
 
     public BatWings(Properties properties) {
-        super(properties);
-    }
-
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if (KeyboardHelper.isHoldingShift()) {
-            tooltip.add(new StringTextComponent("Allows creative flight for " + (MAX / 20) + " seconds at a time"));
-        }
-
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super(properties, "Allows creative flight for " + (MAX / 20) + " seconds at a time");
     }
 
     @Override
@@ -38,34 +22,41 @@ public class BatWings extends Item {
         if (entityIn instanceof PlayerEntity && !worldIn.isRemote()){
             PlayerEntity player = (ServerPlayerEntity) entityIn;
 
-            if (getTime(stack) == 0){
-                if (!player.isCreative() && !player.isSpectator()) {
-                    player.abilities.allowFlying = false;
-                    player.abilities.isFlying = false;
-                    player.sendPlayerAbilities();
-                }
-            } else {
-                player.abilities.allowFlying = true;
-                player.sendPlayerAbilities();
+            if (getTime(stack) == 0)
+                setFlightState(player, false);
+            else {
+                setFlightState(player, true);
                 if (player.abilities.isFlying){
                     addTime(stack, -1);
                 }
             }
 
+            // recharge fly time while not flying
             if (!player.abilities.isFlying && (player.isOnGround() || player.isInWater())){
                 addTime(stack, RECOVER_RATE);
             }
         }
     }
 
+    // stop flying if you drop the item
     @Override
     public boolean onDroppedByPlayer(ItemStack item, PlayerEntity player) {
-        if (!player.isCreative() && !player.isSpectator()) {
-            player.abilities.allowFlying = false;
-            player.abilities.isFlying = false;
-            player.sendPlayerAbilities();
-        }
+        setFlightState(player, false);
         return true;
+    }
+
+    private void setFlightState(PlayerEntity player, boolean allowedToFly){
+        if (allowedToFly){
+            player.abilities.allowFlying = true;
+        } else {
+            if (!player.isCreative() && !player.isSpectator()) {
+                player.abilities.allowFlying = false;
+                player.abilities.isFlying = false;
+            }
+        }
+
+        // Sync with client
+        player.sendPlayerAbilities();
     }
 
     public boolean showDurabilityBar(ItemStack stack){

@@ -32,21 +32,13 @@ import net.minecraft.world.World;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class EnderBag extends Item {
+public class EnderBag extends DescribableItem {
     private static final ITextComponent CONTAINER_NAME = new TranslationTextComponent("container.enderchest");
 
     public EnderBag(Properties properties) {
-        super(properties);
+        super(properties, "Right click to open your ender chest");
     }
 
-    @Override
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if (KeyboardHelper.isHoldingShift()) {
-            tooltip.add(new StringTextComponent("Right click to open your ender chest"));
-        }
-
-        super.addInformation(stack, worldIn, tooltip, flagIn);
-    }
 
     @Override
     public ActionResult<ItemStack> onItemRightClick(World worldIn, PlayerEntity playerIn, Hand handIn) {

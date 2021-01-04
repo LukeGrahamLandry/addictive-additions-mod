@@ -21,17 +21,9 @@ import net.minecraftforge.fml.common.Mod;
 import java.util.List;
 
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.FORGE)
-public class AntiTrampleCharm extends Item {
+public class AntiTrampleCharm extends DescribableItem {
     public AntiTrampleCharm(Properties properties) {
-        super(properties);
-    }
-
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if (KeyboardHelper.isHoldingShift()) {
-            tooltip.add(new StringTextComponent("Makes you not trample crops"));
-        }
-
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super(properties, "Makes you not trample crops");
     }
 
     @SubscribeEvent

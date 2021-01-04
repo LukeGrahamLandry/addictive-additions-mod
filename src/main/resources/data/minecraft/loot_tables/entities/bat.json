@@ -1,0 +1,13 @@
+{
+    "pools": [{
+      "name": "main",
+      "rolls": 1,
+      "entries": [
+        {
+            "type": "item",
+            "name": "addictiveadditions:bat_wing",
+            "weight": 100
+        }
+      ]
+    }]
+}

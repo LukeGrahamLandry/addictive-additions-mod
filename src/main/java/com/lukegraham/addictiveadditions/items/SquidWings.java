@@ -2,37 +2,23 @@ package com.lukegraham.addictiveadditions.items;
 
 import com.lukegraham.addictiveadditions.AddictiveAdditions;
 import com.lukegraham.addictiveadditions.util.KeyboardHelper;
-import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.ServerPlayerEntity;
-import net.minecraft.item.Item;
 import net.minecraft.item.ItemStack;
 import net.minecraft.nbt.CompoundNBT;
 import net.minecraft.network.play.server.SEntityVelocityPacket;
 import net.minecraft.util.math.vector.Vector3d;
-import net.minecraft.util.text.ITextComponent;
-import net.minecraft.util.text.StringTextComponent;
 import net.minecraft.world.World;
 
-import java.util.List;
-
-public class SquidWings extends Item {
-    private int MAX = 7*20;
-    private int RECOVER_RATE = 2;
-    private double ACCELERATION = 0.2D;
-    private double MAX_SPEED = 0.25D;
+public class SquidWings extends DescribableItem {
+    static private int MAX = 7*20;
+    static private int RECOVER_RATE = 2;
+    static private double ACCELERATION = 0.2D;
+    static private double MAX_SPEED = 0.25D;
 
     public SquidWings(Properties properties) {
-        super(properties);
-    }
-
-    public void addInformation(ItemStack stack, World worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
-        if (KeyboardHelper.isHoldingShift()) {
-            tooltip.add(new StringTextComponent("Allows upward flight for " + (MAX / 20) + " seconds at a time"));
-        }
-
-        super.addInformation(stack, worldIn, tooltip, flagIn);
+        super(properties, "Allows upward flight for " + (MAX / 20) + " seconds at a time");
     }
 
     @Override

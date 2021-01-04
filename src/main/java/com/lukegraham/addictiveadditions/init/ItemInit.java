@@ -30,6 +30,9 @@ public class ItemInit {
 
     public static final RegistryObject<Item> ANTI_TRAMPLE_CHARM = ITEMS.register("anti_trample_charm", () -> new AntiTrampleCharm(props()));
     public static final RegistryObject<Item> HELP_BOOK = ITEMS.register("help_book", () -> new HelpBook(props()));
+    public static final RegistryObject<Item> CARDBOARD_BOX = ITEMS.register("cardboard_box", () -> new CardboardBox(props()));
+    public static final RegistryObject<Item> OBSIDIAN_SHIELD = ITEMS.register("obsidian_shield", () -> new ObsidianShield(props()));
+    public static final RegistryObject<Item> MAGIC_MIRROR = ITEMS.register("magic_mirror", () -> new MagicMirror(props().maxDamage(150)));
 
     private static RegistryObject<Item> createDescriptionItem(String name, String description){
         return ITEMS.register(name, () -> new DescribableItem(props(), description));
