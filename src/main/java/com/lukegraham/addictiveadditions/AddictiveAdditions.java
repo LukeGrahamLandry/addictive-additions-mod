@@ -32,6 +32,7 @@ public class AddictiveAdditions
         ItemInit.ITEMS.register(modEventBus);     // registers your items
         BlockInit.BLOCKS.register(modEventBus);   // registers your blocks
         EntityInit.ENTITY_TYPES.register(modEventBus);
+        TileEntityInit.TILE_ENTITY_TYPES.register(modEventBus);
 
         MinecraftForge.EVENT_BUS.addListener(EventPriority.HIGH, OreGen::addFeaturesToBiomes);
 

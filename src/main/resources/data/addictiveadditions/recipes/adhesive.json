@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smelting",
+  "ingredient": {
+    "item": "addictiveadditions:adhesive_blend"
+  },
+  "result": "addictiveadditions:adhesive",
+  "experience": 1.0,
+  "cookingtime": 100
+}

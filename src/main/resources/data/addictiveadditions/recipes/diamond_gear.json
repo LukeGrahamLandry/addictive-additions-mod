@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " i",
+    "iai",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:diamond"
+    },
+    "a": {
+      "item": "addictiveadditions:gold_gear"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:diamond_gear"
+  }
+}

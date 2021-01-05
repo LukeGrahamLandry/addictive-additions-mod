@@ -1,5 +1,6 @@
 package com.lukegraham.addictiveadditions.items;
 
+import com.lukegraham.addictiveadditions.tile_entity.InventoryTile;
 import com.lukegraham.addictiveadditions.util.KeyboardHelper;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.block.Block;
@@ -67,7 +68,7 @@ public class CardboardBox extends BlockItem {
             tag.put("BlockEntityTag", chestData);
             stack.setTag(tag);
 
-            ((ChestTileEntity)tile).clear();
+            ((IInventory)tile).clear();
             worldIn.setBlockState(ray.getPos(), Blocks.AIR.getDefaultState());
         }
         return super.onItemRightClick(worldIn, playerIn, handIn);

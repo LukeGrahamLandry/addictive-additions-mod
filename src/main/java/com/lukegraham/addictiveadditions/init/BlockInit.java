@@ -1,6 +1,8 @@
 package com.lukegraham.addictiveadditions.init;
 
 import com.lukegraham.addictiveadditions.AddictiveAdditions;
+import com.lukegraham.addictiveadditions.blocks.MobSlayerBlock;
+import com.lukegraham.addictiveadditions.blocks.VacuumHopperBlock;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.item.BlockItem;
@@ -17,6 +19,12 @@ import net.minecraftforge.registries.IForgeRegistry;
 @Mod.EventBusSubscriber(bus = Mod.EventBusSubscriber.Bus.MOD)
 public class BlockInit {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AddictiveAdditions.MOD_ID);
+
+    public static final RegistryObject<Block> MOB_SLAYER = BLOCKS.register("mob_slayer",
+            () -> new MobSlayerBlock(Block.Properties.create(Material.ROCK)));
+
+    public static final RegistryObject<Block> VACUUM_HOPPER = BLOCKS.register("vacuum_hopper",
+            () -> new VacuumHopperBlock(Block.Properties.create(Material.ROCK)));
 
     // automaticlly creates items for all blocks
     // you could do it manually instead by registering BlockItems in your ItemInit class

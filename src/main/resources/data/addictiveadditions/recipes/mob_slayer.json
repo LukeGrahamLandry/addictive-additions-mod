@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " n ",
+    "sas",
+    "aga"
+  ],
+  "key": {
+    "n": {
+      "item": "minecraft:netherite_sword"
+    },
+    "s": {
+      "item": "minecraft:iron_sword"
+    },
+    "g": {
+      "item": "addictiveadditions:diamond_gear"
+    },
+    "a": {
+      "item": "addictiveadditions:adhesive"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:mob_slayer"
+  }
+}

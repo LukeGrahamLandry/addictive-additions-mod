@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " i",
+    "iai",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:iron_ingot"
+    },
+    "a": {
+      "item": "addictiveadditions:adhesive"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:iron_gear"
+  }
+}

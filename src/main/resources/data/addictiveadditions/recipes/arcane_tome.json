@@ -1,0 +1,25 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " e ",
+    "lbl",
+    " s "
+  ],
+  "key": {
+    "b": {
+      "item": "minecraft:book"
+    },
+    "e": {
+      "item": "minecraft:experience_bottle"
+    },
+    "l": {
+      "item": "minecraft:lapis_block"
+    },
+    "s": {
+      "item": "minecraft:wither_skeleton_skull"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:anti_trample_charm"
+  }
+}

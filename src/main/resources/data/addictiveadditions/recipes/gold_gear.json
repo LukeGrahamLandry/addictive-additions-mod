@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " i",
+    "iai",
+    " i "
+  ],
+  "key": {
+    "i": {
+      "item": "minecraft:gold_ingot"
+    },
+    "a": {
+      "item": "addictiveadditions:iron_gear"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:gold_gear"
+  }
+}

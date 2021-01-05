@@ -1,0 +1,22 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    " e ",
+    "hhh",
+    " g "
+  ],
+  "key": {
+    "h": {
+      "item": "minecraft:hopper"
+    },
+    "e": {
+      "item": "minecraft:ender_pearl"
+    },
+    "g": {
+      "item": "addictiveadditions:gold_gear"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:vacuum_hopper"
+  }
+}

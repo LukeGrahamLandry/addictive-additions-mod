@@ -1,0 +1,21 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {
+      "item": "minecraft:slime_ball"
+    },
+    {
+      "item": "minecraft:redstone_block"
+    },
+    {
+      "item": "minecraft:green_dye"
+    },
+    {
+      "item": "addictiveadditions:bat_wing"
+    }
+  ],
+  "result": {
+    "item": "addictiveadditions:adhesive_blend",
+    "count": 3
+  }
+}
