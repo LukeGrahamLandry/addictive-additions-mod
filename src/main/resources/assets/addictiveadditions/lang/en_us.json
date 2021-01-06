@@ -15,5 +15,17 @@
     "item.addictiveadditions.anti_trample_charm": "Anti-Trample Charm",
     "item.addictiveadditions.help_book": "Help Book",
     "item.addictiveadditions.cardboard_box": "Cardboard Box",
-    "item.addictiveadditions.arcane_tome": "Arcane Tome"
+    "item.addictiveadditions.obsidian_shield": "Obsidian Shield",
+    "item.addictiveadditions.magic_mirror": "Magic Mirror",
+    "item.addictiveadditions.arcane_tome": "Arcane Tome",
+    "item.addictiveadditions.adhesive": "Adhesive",
+    "item.addictiveadditions.adhesive_blend": "Adhesive Blend",
+    "item.addictiveadditions.iron_gear": "Iron Gear",
+    "item.addictiveadditions.gold_gear": "Gold Gear",
+    "item.addictiveadditions.diamond_gear": "Diamond Gear",
+    "item.addictiveadditions.netherite_gear": "Netherite Gear",
+
+    "block.addictiveadditions.mob_slayer": "Mob Slayer",
+    "block.addictiveadditions.vacuum_hopper": "Vacuum Hopper",
+    "block.addictiveadditions.cursed_earth": "Cursed Earth"
 }

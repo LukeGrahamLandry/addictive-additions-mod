@@ -55,7 +55,7 @@ public class HelpBook extends WritableBookItem {
         if (tag == null) tag = new CompoundNBT();
 
         tag.putString("author", "Luke");
-        tag.putString("title", "Harder Core Help");
+        tag.putString("title", "Addictive Additions Help");
         tag.putBoolean("resolved", true);
 
         ListNBT pages = getPages();
@@ -72,21 +72,23 @@ public class HelpBook extends WritableBookItem {
         addPage("Small bags hold 1 row of items. Shulker bags hold 3 rows of items. Ender bags open your ender chest.", pages);
         addPage("Hammers (iron, diamond, netherite) are a 3x3 pickaxe. Excavator (iron) is a 3x3 shovel. Lumber axe (iron) chops down a whole tree.", pages);
         addPage("Anti-Trample charm prevents you from breaking farm land when you fall on it.", pages);
+        addPage("The Magic Mirror teleports you to your spawn point", pages);
+        addPage("The mob slayer kills entities in a 7x7 square in front of it (requires fuel). Vacuum hopper picks up items within 7 blocks. Cursed Earth spawns mobs very quickly, spreads in darkness and burns in day light", pages);
+        addPage("A Cardboard Box lets you pick up a chest and retain its contents. An Obsidian Shield grants knock back resistance and extinguishes fire. An Arcane Tome stores experience points", pages);
+        addPage("", pages);
         addPage("", pages);
 
         return pages;
     }
 
     private void addPage(String content, ListNBT pages){
-        INBT page = (INBT) StringNBT.valueOf("{\"text\": \"" + content + "\"}");
+        INBT page = StringNBT.valueOf("{\"text\": \"" + content + "\"}");
         // INBT page = (INBT) StringNBT.valueOf(ITextComponent.Serializer.toJson(itextcomponent));
         pages.add(page);
     }
 
-    private static final String NBT_KEY = AddictiveAdditions.MOD_ID + ".first_joined";
-
-
     // Give the book the first time they join the world
+    private static final String NBT_KEY = AddictiveAdditions.MOD_ID + ".first_joined";
     @SubscribeEvent
     public static void onPlayerJoin(PlayerEvent.PlayerLoggedInEvent event) {
         PlayerEntity player = event.getPlayer();

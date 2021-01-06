@@ -1,6 +1,7 @@
 # Addictive Additions
  
-A minecraft mod for forge 1.16.3
+A Minecraft mod for forge 1.16.3
+Reimplements some of my favourite features of other mods (ie Extra Utilities, Thermal Expansion, Industrial Foregoing, Actually Additions)
 
 ## Features
 - Wings
@@ -25,4 +26,5 @@ A minecraft mod for forge 1.16.3
     - Cardboard Box: lets you pick up a chest and retain its contents 
     - Obsidian Shield: a shield that grants knock back resistance and extinguishes fire
     - Arcane Tome: stores experience points 
+    - Cursed Earth: spawns mobs very quickly. Spreads in darkness and burns in day light
 

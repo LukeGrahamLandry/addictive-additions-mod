@@ -1,6 +1,7 @@
 package com.lukegraham.addictiveadditions.init;
 
 import com.lukegraham.addictiveadditions.AddictiveAdditions;
+import com.lukegraham.addictiveadditions.blocks.CursedEarth;
 import com.lukegraham.addictiveadditions.blocks.MobSlayerBlock;
 import com.lukegraham.addictiveadditions.blocks.VacuumHopperBlock;
 import net.minecraft.block.Block;
@@ -21,10 +22,13 @@ public class BlockInit {
     public static final DeferredRegister<Block> BLOCKS = DeferredRegister.create(ForgeRegistries.BLOCKS, AddictiveAdditions.MOD_ID);
 
     public static final RegistryObject<Block> MOB_SLAYER = BLOCKS.register("mob_slayer",
-            () -> new MobSlayerBlock(Block.Properties.create(Material.ROCK)));
+            () -> new MobSlayerBlock(Block.Properties.create(Material.ROCK).harvestTool(ToolType.PICKAXE).setRequiresTool()));
 
     public static final RegistryObject<Block> VACUUM_HOPPER = BLOCKS.register("vacuum_hopper",
-            () -> new VacuumHopperBlock(Block.Properties.create(Material.ROCK)));
+            () -> new VacuumHopperBlock(Block.Properties.create(Material.ROCK).harvestTool(ToolType.PICKAXE).setRequiresTool()));
+
+    public static final RegistryObject<Block> CURSED_EARTH = BLOCKS.register("cursed_earth",
+            () -> new CursedEarth(Block.Properties.create(Material.EARTH).harvestTool(ToolType.SHOVEL)));
 
     // automaticlly creates items for all blocks
     // you could do it manually instead by registering BlockItems in your ItemInit class

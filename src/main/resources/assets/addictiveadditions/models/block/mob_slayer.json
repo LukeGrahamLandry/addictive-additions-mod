@@ -1,8 +1,26 @@
 {
-  "parent": "minecraft:block/orientable",
+  "parent": "block/block",
   "textures": {
-    "top": "minecraft:block/furnace_top",
-    "front": "minecraft:block/furnace_front",
-    "side": "minecraft:block/furnace_side"
-  }
+    "particle": "block/dirt",
+    "bottom": "block/furnace_top",
+    "top": "block/furnace_top",
+    "sword": "addictiveadditions:blocks/mob_slayer_side",
+    "swordwest": "addictiveadditions:blocks/mob_slayer_side_west",
+    "side": "block/furnace_side",
+    "front": "addictiveadditions:blocks/mob_slayer_front"
+  },
+  "elements": [
+    {
+      "from": [ 0, 0, 0 ],
+      "to": [ 16, 16, 16 ],
+      "faces": {
+        "down":  { "uv": [ 0, 0, 16, 16 ], "texture": "#bottom", "cullface": "down" },
+        "up":    { "uv": [ 0, 0, 16, 16 ], "texture": "#top",    "cullface": "up", "tintindex": 0 },
+        "north": { "uv": [ 0, 0, 16, 16 ], "texture": "#front",   "cullface": "north" },
+        "south": { "uv": [ 0, 0, 16, 16 ], "texture": "#side",   "cullface": "south" },
+        "west":  { "uv": [ 0, 0, 16, 16 ], "texture": "#swordwest",   "cullface": "west" },
+        "east":  { "uv": [ 0, 0, 16, 16 ], "texture": "#sword",   "cullface": "east" }
+      }
+    }
+  ]
 }
