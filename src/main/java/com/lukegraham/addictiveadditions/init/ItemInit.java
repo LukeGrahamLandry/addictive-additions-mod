@@ -32,6 +32,10 @@ public class ItemInit {
     public static final RegistryObject<Item> OBSIDIAN_SHIELD = ITEMS.register("obsidian_shield", () -> new ObsidianShield(props()));
     public static final RegistryObject<Item> MAGIC_MIRROR = ITEMS.register("magic_mirror", () -> new MagicMirror(props().maxDamage(150)));
     public static final RegistryObject<Item> ARCANE_TOME = ITEMS.register("arcane_tome", () -> new ArcaneTome(props().maxStackSize(1)));
+    public static final RegistryObject<Item> SLIME_SLING = ITEMS.register("slime_sling", () -> new SlimeSling(props().maxDamage(500)));
+    public static final RegistryObject<Item> SLIME_BOOTS = ITEMS.register("slime_boots", () -> new SlimeBoots(props()));
+   //  public static final RegistryObject<Item> SOUL_VIAL = ITEMS.register("soul_vial", () -> new SoulVial(props()));
+    public static final RegistryObject<Item> DIRT_STICK = ITEMS.register("dirt_stick", () -> new DirtStick(props()));
 
     // INGREDIENTS
     public static final RegistryObject<Item> BAT_WING = createDescriptionItem("bat_wing", "Dropped by bats and used to make Wings of the Bat and adhesive blend.");
@@ -41,6 +45,7 @@ public class ItemInit {
     public static final RegistryObject<Item> GOLD_GEAR = createDescriptionItem("gold_gear", "Used to make machines.");
     public static final RegistryObject<Item> DIAMOND_GEAR = createDescriptionItem("diamond_gear", "Used to make machines.");
     public static final RegistryObject<Item> NETHERITE_GEAR = createDescriptionItem("netherite_gear", "Used to make machines.");
+    public static final RegistryObject<Item> SPAWNER_SHARD = createDescriptionItem("spawner_shard", "Dropped when a spawner is mined with silk touch.");
 
     private static RegistryObject<Item> createDescriptionItem(String name, String description){
         return ITEMS.register(name, () -> new DescribableItem(props(), description));

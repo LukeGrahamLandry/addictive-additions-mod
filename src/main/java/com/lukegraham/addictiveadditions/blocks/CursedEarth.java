@@ -1,16 +1,24 @@
 package com.lukegraham.addictiveadditions.blocks;
 
+import com.lukegraham.addictiveadditions.util.KeyboardHelper;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockState;
 import net.minecraft.block.Blocks;
+import net.minecraft.client.util.ITooltipFlag;
 import net.minecraft.entity.EntityType;
 import net.minecraft.entity.LivingEntity;
+import net.minecraft.item.ItemStack;
 import net.minecraft.util.Direction;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.text.ITextComponent;
+import net.minecraft.util.text.StringTextComponent;
+import net.minecraft.world.IBlockReader;
 import net.minecraft.world.IWorld;
 import net.minecraft.world.World;
 import net.minecraft.world.server.ServerWorld;
 
+import javax.annotation.Nullable;
+import java.util.List;
 import java.util.Random;
 
 public class CursedEarth extends Block {
@@ -20,6 +28,14 @@ public class CursedEarth extends Block {
         super(properties);
     }
 
+    @Override
+    public void addInformation(ItemStack stack, @Nullable IBlockReader worldIn, List<ITextComponent> tooltip, ITooltipFlag flagIn) {
+        if (KeyboardHelper.isHoldingShift()) {
+            tooltip.add(new StringTextComponent("Very high hostile mob spawn rate and spreads in darkness. Burns in daylight"));
+        }
+
+        super.addInformation(stack, worldIn, tooltip, flagIn);
+    }
     @Override
     public void tick(BlockState state, ServerWorld worldIn, BlockPos pos, Random rand) {
         if (!worldIn.isRemote()){

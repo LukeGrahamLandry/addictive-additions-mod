@@ -13,7 +13,7 @@
     "item.addictiveadditions.iron_excavator": "Iron Excavator",
     "item.addictiveadditions.iron_lumber_axe": "Iron Lumber Axe",
     "item.addictiveadditions.anti_trample_charm": "Anti-Trample Charm",
-    "item.addictiveadditions.help_book": "Help Book",
+    "item.addictiveadditions.help_book": "Addictive Additions Help",
     "item.addictiveadditions.cardboard_box": "Cardboard Box",
     "item.addictiveadditions.obsidian_shield": "Obsidian Shield",
     "item.addictiveadditions.magic_mirror": "Magic Mirror",
@@ -24,6 +24,7 @@
     "item.addictiveadditions.gold_gear": "Gold Gear",
     "item.addictiveadditions.diamond_gear": "Diamond Gear",
     "item.addictiveadditions.netherite_gear": "Netherite Gear",
+    "item.addictiveadditions.slime_sling": "Slime Sling",
 
     "block.addictiveadditions.mob_slayer": "Mob Slayer",
     "block.addictiveadditions.vacuum_hopper": "Vacuum Hopper",

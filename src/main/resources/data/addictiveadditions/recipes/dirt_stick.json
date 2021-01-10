@@ -1,0 +1,19 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "b",
+    "s",
+    "s"
+  ],
+  "key": {
+    "s": {
+      "item": "minecraft:gold_ingot"
+    },
+    "b": {
+      "item": "minecraft:dirt"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:dirt_stick"
+  }
+}

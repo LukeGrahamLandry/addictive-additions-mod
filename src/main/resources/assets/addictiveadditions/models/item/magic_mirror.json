@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "addictiveadditions:items/help_book"
+    "layer0": "addictiveadditions:items/magic_mirror"
   }
 }

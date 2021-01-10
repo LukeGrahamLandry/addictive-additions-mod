@@ -1,5 +1,6 @@
 package com.lukegraham.addictiveadditions.items;
 
+import com.lukegraham.addictiveadditions.events.RepairHandler;
 import com.lukegraham.addictiveadditions.init.ItemInit;
 import com.lukegraham.addictiveadditions.util.KeyboardHelper;
 import net.minecraft.client.util.ITooltipFlag;
@@ -34,6 +35,8 @@ public class MagicMirror extends DescribableItem {
     Random rand = new Random();
     public MagicMirror(Properties properties) {
         super(properties, "Hold right click to return to your spawn point. Doesn't work across dimensions");
+        RepairHandler.addRepairRecipe(this, Items.ENDER_EYE, 100, 10);
+        RepairHandler.addRepairRecipe(this, Items.ENDER_PEARL, 100, 10);
     }
 
     @Override
@@ -88,17 +91,4 @@ public class MagicMirror extends DescribableItem {
         playerIn.setActiveHand(handIn);
         return ActionResult.resultConsume(itemstack);
     }
-
-    @SubscribeEvent
-    public static void handleRepair(AnvilUpdateEvent event){
-        boolean isEnder = event.getRight().getItem() == Items.ENDER_EYE || event.getRight().getItem() == Items.ENDER_PEARL;
-        if (event.getLeft().getItem() == ItemInit.MAGIC_MIRROR.get() && isEnder){
-            ItemStack out = event.getLeft().copy();
-            out.setDamage(out.getDamage() - 100);
-            event.setOutput(out);
-            event.setCost(10);
-            event.setMaterialCost(1);
-        }
-    }
-
 }

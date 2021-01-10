@@ -1,0 +1,20 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "ddd",
+    "dwd",
+    "ddd"
+  ],
+  "key": {
+    "w": {
+      "item": "addictiveadditions:spawner_shard"
+    },
+    "d": {
+      "item": "minecraft:dirt"
+    }
+  },
+  "result": {
+    "item": "addictiveadditions:cursed_earth",
+    "count": 8
+  }
+}
